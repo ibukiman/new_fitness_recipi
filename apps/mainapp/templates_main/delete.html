@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block table_css %}
+<style>
+    th,td{
+        border: 1px solid black;
+    }
+    .table_div{
+        /* margin: 0 auto; */
+        padding-top: 8%;
+        padding-left: 33%;
+        padding-bottom: 5%;
+    }
+</style>
+{% endblock %}
+
+
+{% block contents %}
+<div class="table_div">
+<table class ="delete_table" border="1" style="border-collapse: collapse">
+    <tr style="background-color: aqua;">
+        <th>タイトル</th>
+        <th>P</th>
+        <th>F</th>
+        <th>C</th>
+        <th>Kcal</th>
+        <th>作成日時</th>
+        <th> </th>
+    </tr>
+{% for recipi in user_recipes %}
+    <tr>
+        <th>
+            {{recipi.title}}
+        </th>
+        <td>{{recipi.p}}</td>
+        <td>{{recipi.f}}</td>
+        <td>{{recipi.c}}</td>
+        <td>{{recipi.kcal}}</td>
+        <td>{{recipi.create_at}}</td>
+        <td><a href="{{url_for('mainapp.delete_recipi',id=recipi.id)}}">削除</a></td>
+    </tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

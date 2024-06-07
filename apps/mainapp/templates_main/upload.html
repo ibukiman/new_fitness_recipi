@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload{% endblock %}
+{% block upload_css %}
+<style>
+.pad{
+    background-color:lavender;
+    border:solid 2px;
+    padding-top:30px;
+    padding-bottom:50px;
+    padding-left:100px;
+    margin-top:50px;
+    margin-right:70px;
+    margin-left:70px;
+}
+table th{
+    padding:5px 10px;
+}
+table td{
+    padding:5px 10px;
+}
+th,td{
+    border:solid 1px #aaaaaa;
+}
+input{
+    width:200px;
+    height:30px;
+}
+textarea{
+    width:500px;
+    height:300px;
+}
+</style>
+{% endblock %}
+
+{% block contents %}
+<br>
+<!-- <div class="container">
+    <div class="row">
+        <div class="col offset-2"> -->
+        <div class="pad">
+            <h2>投稿</h2>
+            <p>レシピを登録してください</p>
+            <br>
+            <form action="{{url_for('mainapp.upload')}}" method="POST" enctype="multipart/form-data" novalidate="novalidate">
+                {{form.csrf_token}}
+                <p>
+                    {{form.title.label}}
+                    {{form.title(placeholder="料理名")}}
+                    {% for error in form.title.errors %}
+                    <span style="color:red">{{error}}</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{form.material.label}}
+                    {{form.material(placeholder="材料")}}
+                </p>
+                <p>
+                    {{form.how_to.label}}
+                    {{form.how_to(placeholder="作り方")}}    
+                </p>
+                <p>
+                    {{form.p.label}}
+                    {{form.p(placeholder="p")}}
+                    {% for error in form.title.errors %}
+                    <span style="color:red">{{error}}</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{form.f.label}}
+                    {{form.f(placeholder="f")}}
+                    {% for error in form.title.errors %}
+                    <span style="color:red">{{error}}</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{form.c.label}}
+                    {{form.c(placeholder="c")}}
+                    {% for error in form.title.errors %}
+                    <span style="color:red">{{error}}</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{form.kcal.label}}
+                    {{form.kcal(placeholder="カロリー")}}
+                    {% for error in form.title.errors %}
+                    <span style="color:red">{{error}}</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{form.url.label}}
+                    {{form.url(placeholder="参照元url")}}
+                    {% for error in form.title.errors %}
+                    <span style="color:red">{{error}}</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{form.image()}}
+                    {% for error in form.title.errors %}
+                    <span style="color:red">{{error}}</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{form.submit()}}
+                </p>
+            </form>
+            <a href="{{url_for('mainapp.index')}}">投稿をやめる</a>
+        </div>
+        <!-- </div>
+    </div>
+</div> -->
+{% endblock %}

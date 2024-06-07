@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('authapp.static',filename='css/style.css')}}">
+</head>
+<body>
+    <section class="page-section" id="contact">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6 text-center">
+                    <h2 class="mt-0">ログイン</h2>
+                    <hr class="divider" />
+                    <p class="text-muted mb-5">ユーザー名と、パスワードを入力して下さい。</p>
+                </div>
+            </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+            <div class="col-lg-6">
+            <!-- * * * * * * * * * * * * * * *-->
+            <!-- * * SB Forms Contact Form * *-->
+            <!-- * * * * * * * * * * * * * * *-->
+            <!-- This form is pre-integrated with SB Forms.-->
+            <!-- To make this form functional, sign up at-->
+            <!-- https://startbootstrap.com/solution/contact-forms-->
+            <!-- to get an API token!-->
+                <form action="{{ url_for('authapp.index') }}" method="POST" novalidate="novalidate">
+                <!-- 認証に失敗した時のエラーメッセージ -->
+                    {% for message in get_flashed_messages() %}
+                    <p style="color:red">{{message}}</p>
+                    <br>
+                    {% endfor %}
+
+                <!-- ユーザーネームが未入力の場合 -->
+                    {% for error in form.username.errors %}
+                    <span style="color:red">{{error}}</span>
+                    <br>
+                    {% endfor %}
+
+                <!-- パスワードが未入力の場合 -->
+                    {% for error in form.password.errors %}
+                    <span style="color:red">{{error}}</span>
+                    {% endfor %}
+                    {{form.csrf_token}}
+                    <p>
+                    {{form.username.label}}
+                    {{form.username(placefolder="ユーザー名")}}
+                    
+                    </p>
+                    <p>
+                    {{form.password.label}}
+                    {{form.password(placefolder="パスワード")}}
+                    
+                    </p>
+                    <p>
+                    {{form.submit()}}
+                    </p>
+                </form>
+            </div>
+        </div>
+        </div>
+    </section>
+</body>
+</html>

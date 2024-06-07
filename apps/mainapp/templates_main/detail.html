@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail{% endblock %}
+{% block detail_css %}
+<style>
+h2{
+    border-bottom:solid 3px black;
+}
+.detail_div{
+    margin:0 20%;
+}
+</style>
+{% endblock %}
+{% block contents %}
+<div class="detail_div">
+<h1>料理名：{{detail.title}}</h1>
+<img src="{{ url_for('mainapp.image_file',filename=detail.image_path) }}" alt="画像" style="width:40%; display:block; margin:0 auto;">
+<h2 >材料</h2>
+<p>{{detail.material}}</p>
+<h2>作り方</h2>
+<p>{{detail.how_to}}</p>
+<h2>参照元url</h2>
+<a href="{{detail.url}}" style="display:block;">{{detail.url}}</a>
+<!-- <a href="{{ url_for('mainapp.index') }}">レシピ一覧へ戻る</a> -->
+</div>
+{% endblock %}
