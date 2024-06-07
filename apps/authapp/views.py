@@ -12,7 +12,7 @@ from flask_login import login_user
 from sqlalchemy import select
 from apps.authapp import forms
 from apps import models
-from apps.recipiapp import db
+from apps.app import db
 
 @authapp.route('/login',methods=['GET','POST'])
 def index():

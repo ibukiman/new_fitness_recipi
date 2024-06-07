@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash,check_password_hash
 
 from flask_login import UserMixin
 
-from apps.recipiapp import db
+from apps.app import db
 
 class User(db.Model,UserMixin):
     __tablename__="users"

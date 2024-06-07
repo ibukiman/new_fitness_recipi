@@ -87,7 +87,7 @@ from pathlib import Path
 from flask_login import current_user
 from flask import current_app
 
-from apps.recipiapp import db
+from apps.app import db
 from apps.mainapp import forms
 from apps.mainapp import models as modelrecipi
 
